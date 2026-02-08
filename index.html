@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <title>Happy Birthday ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="gateau.png" type="image/png">
-
 
 <style>
 *{
@@ -117,7 +115,7 @@ h2{
 
 .gallery-grid img{
   width:100%;
-  height:200px;
+  height: auto;
   object-fit:cover;
   border-radius:15px;
   cursor:pointer;
@@ -126,7 +124,7 @@ h2{
 
 .gallery-grid img:hover{
   transform:scale(1.05);
-  box-shadow:0 15px 30px rgba(0,0,0,0.4);
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
 /* Popup */
@@ -233,6 +231,40 @@ footer{
   transform:scale(1.1);
 }
 
+.photo-cover{
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+  cursor:pointer;
+}
+
+.photo-cover img{
+  width:100%;
+  display:block;
+  filter:blur(6px) brightness(0.7);
+  transition:0.8s;
+}
+
+.photo-cover .cover{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,#ff4b7d,#ff758c);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:2.5rem;
+  color:white;
+  transition:0.8s;
+}
+
+.photo-cover.open img{
+  filter:blur(0) brightness(1);
+  transform:scale(1.05);
+}
+
+.photo-cover.open .cover{
+  transform:translateY(-100%);
+}
 </style>
 </head>
 
@@ -286,11 +318,24 @@ footer{
   <!-- Gallery -->
   <section class="gallery">
     <h2>Our Memories 📸</h2>
-    <div class="gallery-grid">
-      <img src="1W.png">
-      <img src="1W.png">
-      <img src="1W.png">
-    </div>
+   <div class="gallery-grid">
+
+  <div class="photo-cover">
+    <img src="1i.png.jpeg">
+    <div class="cover">💕</div>
+  </div>
+
+  <div class="photo-cover">
+    <img src="2i.png.jpeg">
+    <div class="cover">💕</div>
+  </div>
+
+  <div class="photo-cover">
+    <img src="3i.png.jpeg">
+    <div class="cover">💕</div>
+  </div>
+
+</div>
   </section>
 
   <footer>
@@ -304,17 +349,16 @@ footer{
   <div class="message-box">
     <h2>Sadece Sana ❤️</h2>
     <p>
-      İyi ki doğdun… 🎂<br><br>
+      İyi ki doğdun Ilay 🎂<br><br>
 
       Seni tanımak bu yılın en güzel sürprizi oldu.<br>
       Hayatıma girdiğin günden beri bazı şeyler daha güzel,
       daha anlamlı.<br><br>
 
       Belki farkında değilsindir ama seninle konuşmak bile
-      insanın gününü güzelleştiriyor.<br><br>
+      benim günümü güzelleştiriyor.<br><br>
 
-      Kim bilir… belki önümüzdeki yılın en güzel hikâyesi
-      de birlikte yazılır 💖
+     Mutlu yillar dilerim  💖
     </p>
   </div>
 </div>
@@ -372,8 +416,12 @@ function enterSite(){
   document.getElementById("welcomeScreen").style.display="none";
   document.getElementById("mainContent").style.display="block";
 }
+document.querySelectorAll(".photo-cover").forEach(photo=>{
+  photo.addEventListener("click",()=>{
+    photo.classList.toggle("open");
+  });
+});
 </script>
 
 </body>
 </html>
-
